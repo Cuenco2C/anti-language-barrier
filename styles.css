@@ -1,0 +1,289 @@
+/* General */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #3ebdfc 0%, #90d7ff 100%);
+  color: #333;
+  display: flex;
+  justify-content: center;
+  padding: 30px 10px;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  animation: fadeIn 1.2s ease forwards;
+  opacity: 0;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Animated background circles */
+body::before, body::after {
+  content: "";
+  position: fixed;
+  border-radius: 50%;
+  opacity: 0.15;
+  z-index: 0;
+  animation: floatAround 20s ease-in-out infinite;
+}
+
+body::before {
+  width: 300px;
+  height: 300px;
+  background: #48b1bf;
+  top: 10%;
+  left: -150px;
+}
+
+body::after {
+  width: 400px;
+  height: 400px;
+  background: #6dd5fa;
+  bottom: 15%;
+  right: -200px;
+  animation-delay: 10s;
+}
+
+@keyframes floatAround {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(20px) translateX(20px);
+  }
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.main-container {
+  max-width: 600px;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+/* Card hover lift */
+.card {
+  background-color: white;
+  padding: 30px 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  border: 3px solid #003366;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover,
+.card:focus-within {
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+  transform: translateY(-8px);
+}
+
+/* App title */
+.app-title {
+  color: #0066cc;
+  font-size: 28px;
+  margin-bottom: 10px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+/* Tagline */
+.tagline {
+  font-size: 16px;
+  margin-bottom: 20px;
+  text-shadow: 0 1px 1px rgba(255,255,255,0.8);
+}
+
+/* Download button with bounce */
+.download-button {
+  background-color: #4caf50;
+  color: white;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  display: inline-block;
+  font-size: 18px;
+  box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  animation: bounce 3s infinite;
+  outline-offset: 4px;
+}
+
+.download-button:hover,
+.download-button:focus {
+  background-color: #388e3c;
+  box-shadow: 0 8px 25px rgba(56, 142, 60, 0.7);
+  outline: none;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* Note under button */
+.note {
+  font-size: 12px;
+  margin-top: 10px;
+  color: #666;
+  font-style: italic;
+  user-select: none;
+}
+
+/* Features */
+.features {
+  margin-top: 40px;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.8s forwards;
+  animation-delay: 1.5s;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.features h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Feature grid */
+.feature-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  padding: 0 10px;
+}
+
+/* Each feature box */
+.feature {
+  background: linear-gradient(145deg, #b6f0a9, #78c65c);
+  border: 2px solid #4a8a2f;
+  box-shadow: 0 6px 15px rgba(72, 134, 42, 0.3);
+  padding: 24px;
+  border-radius: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  text-align: center;
+  user-select: none;
+  position: relative;
+}
+
+.feature:hover,
+.feature:focus {
+  box-shadow: 0 15px 30px rgba(72, 134, 42, 0.6);
+  transform: translateY(-12px) scale(1.07);
+  z-index: 10;
+  outline: none;
+  filter: drop-shadow(0 0 5px #3e7c17);
+}
+
+/* Emoji style */
+.feature .emoji {
+  font-size: 52px;
+  margin-bottom: 12px;
+  filter: drop-shadow(1px 2px 2px rgba(0,0,0,0.15));
+  transition: transform 0.3s ease;
+}
+
+.feature:hover .emoji,
+.feature:focus .emoji {
+  transform: scale(1.15);
+}
+
+/* Headings inside features */
+.feature h3 {
+  margin: 10px 0 5px;
+  font-size: 16px;
+  color: #2b662b;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 1px rgba(255,255,255,0.6);
+}
+
+/* Paragraphs inside features */
+.feature p {
+  font-size: 14px;
+  color: #333;
+  max-height: 72px;
+  overflow-y: auto;
+  transition: max-height 0.3s ease;
+  line-height: 1.4;
+  user-select: text;
+}
+
+.feature:hover p,
+.feature:focus p {
+  max-height: 120px;
+}
+
+/* Responsive: stack features on smaller screens */
+@media (max-width: 480px) {
+  .card {
+    padding: 20px 15px;
+  }
+}
+
+/* Container covering full viewport behind the main content */
+.floating-languages {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none; /* So it doesn't interfere with clicks */
+  overflow: hidden;
+  z-index: 0;
+  font-weight: 700;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: rgba(9, 255, 0, 0.3);
+  user-select: none;
+}
+
+/* Each floating word styling */
+.lang-word {
+  position: absolute;
+  top: calc(100% * var(--random-top, 0.5));
+  left: 100%;
+  white-space: nowrap;
+  font-size: calc(14px + 3vw);
+  animation-name: floatLeft;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-duration: calc(15s + (var(--i) * 3s));
+  animation-delay: calc(var(--i) * -5s);
+  transform: translateX(0);
+  opacity: 0.4;
+  filter: drop-shadow(0 0 5px rgba(255,255,255,0.3));
+  color: var(--color, rgba(9, 255, 0, 0.3)); /* <-- This line */
+}
+
+/* Animation: move from right to left */
+@keyframes floatLeft {
+  0% {
+    transform: translateX(0);
+    opacity: 0.90;
+  }
+  10%, 90% {
+    opacity: 0.90;
+  }
+  50% {
+    opacity: 0.90;
+  }
+  100% {
+    transform: translateX(-120vw);
+    opacity: 0;
+  }
+}
